@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.scan2Connect
 
 import org.junit.Test
 

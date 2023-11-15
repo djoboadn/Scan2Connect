@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.theme
+package com.example.scan2Connect.ui.theme
 
 import android.app.Activity
 import android.os.Build

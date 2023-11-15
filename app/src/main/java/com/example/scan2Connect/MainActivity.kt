@@ -1,8 +1,8 @@
-package com.example.myapplication.activities
+package com.example
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.myapplication.R
+import com.example.scan2Connect.R
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
