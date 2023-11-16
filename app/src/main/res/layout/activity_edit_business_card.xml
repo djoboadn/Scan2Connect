@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#3385FF"
+        android:gravity="center"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scan_2_connect"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/view_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="11dp">
+
+                <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/back"
+                    android:layout_marginStart="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/edit_business_card"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:layout_toEndOf="@+id/btn_back"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/user_inputs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_title"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/border_business_card"
+                    android:hint="@string/lastname"
+                    android:padding="20dp"/>
+
+                <EditText
+                    android:id="@+id/et_firstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/border_business_card"
+                    android:hint="@string/firstname"
+                    android:layout_marginTop="10dp"
+                    android:padding="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:id="@+id/et_street"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/border_business_card"
+                        android:hint="@string/street"
+                        android:layout_marginTop="10dp"
+                        android:padding="20dp"/>
+
+                    <EditText
+                        android:layout_weight="4"
+                        android:id="@+id/et_house_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/border_business_card"
+                        android:hint="@string/nr"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="20dp"
+                        android:inputType="number"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="9">
+
+                    <EditText
+                        android:layout_weight="6"
+                        android:id="@+id/et_plz"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/border_business_card"
+                        android:hint="@string/plz"
+                        android:layout_marginTop="10dp"
+                        android:padding="20dp"
+                        android:inputType="number"/>
+
+                    <EditText
+                        android:layout_weight="3"
+                        android:id="@+id/et_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/border_business_card"
+                        android:hint="@string/city"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="20dp"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et_tel_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/border_business_card"
+                    android:hint="@string/tel_number"
+                    android:layout_marginTop="10dp"
+                    android:padding="20dp"/>
+
+                <EditText
+                    android:id="@+id/et_email_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/border_business_card"
+                    android:hint="@string/email_address"
+                    android:layout_marginTop="10dp"
+                    android:padding="20dp"/>
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_save"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#3385FF"
+                android:visibility="visible"
+                android:layout_below="@id/user_inputs"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="40dp"
+                android:paddingBottom="20dp"
+                android:layout_below="@id/cv_save"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/logo_blue"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/scan_2_connect"
+                    android:textStyle="bold"
+                    android:textColor="#3385FF"
+                    android:textSize="17sp"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

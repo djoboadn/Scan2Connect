@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="updating_data">Daten werden geladen</string>
+    <string name="scan_2_connect">Scan2Connect</string>
+    <string name="your_business_card">Deine Visitenkarte</string>
+    <string name="your_name">Dein Name</string>
+    <string name="your_street">Deinestr. 123</string>
+    <string name="your_postcode">123456</string>"
+    <string name="your_city">DeineStadt</string>
+    <string name="tel">"Tel: "</string>
+    <string name="your_phone_number">0123 456789</string>
+    <string name="email">"E-Mail: "</string>
+    <string name="your_email_address">deine@email.de</string>
+    <string name="edit_business_card">Visitenkarte bearbeiten</string>
+    <string name="show_qr_code">QR-Code anzeigen</string>
+    <string name="share_business_card">Visitenkarte teilen</string>
+    <string name="firstname">Vorname</string>
+    <string name="lastname">Nachname</string>
+    <string name="street">Straße</string>
+    <string name="nr">Nr.</string>
+    <string name="plz">PLZ.</string>
+    <string name="city">Stadt</string>
+    <string name="tel_number">Telefonnummer</string>
+    <string name="email_address">E-Mail Adresse</string>
+    <string name="save">Speichern</string>
+    <string name="your_qr_code">Dein QR-Code</string>
 </resources>
