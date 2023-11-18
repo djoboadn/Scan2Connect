@@ -24,4 +24,6 @@
     <string name="email_address">E-Mail Adresse</string>
     <string name="save">Speichern</string>
     <string name="your_qr_code">Dein QR-Code</string>
+    <string name="data_saved_successfull">Daten wurden gespeichert</string>
+    <string name="check_input">Bitte überprüfe deine Eingaben.</string>
 </resources>
