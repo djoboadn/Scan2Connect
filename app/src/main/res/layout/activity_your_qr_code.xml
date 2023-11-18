@@ -64,7 +64,6 @@
             android:id="@+id/qr_code"
             android:layout_width="match_parent"
             android:layout_height="220dp"
-            android:background="@drawable/logo_black"
             android:layout_below="@id/view_title"
             android:layout_marginTop="40dp"
             android:layout_marginHorizontal="90dp"/>
