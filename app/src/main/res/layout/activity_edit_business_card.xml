@@ -6,6 +6,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
+    <RelativeLayout
+        android:id="@+id/layout_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gunmetal_opac"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        android:translationZ="99dp"
+        >
+
+        <ProgressBar
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="#3385FF"
+            />
+
+    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -79,7 +99,10 @@
                     android:layout_height="60dp"
                     android:background="@drawable/border_business_card"
                     android:hint="@string/lastname"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:maxLength="15"
+                    android:maxLines="1"
+                    android:inputType="textPersonName"/>
 
                 <EditText
                     android:id="@+id/et_firstname"
@@ -88,7 +111,9 @@
                     android:background="@drawable/border_business_card"
                     android:hint="@string/firstname"
                     android:layout_marginTop="10dp"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:maxLines="1"
+                    android:inputType="textPersonName"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -104,7 +129,9 @@
                         android:background="@drawable/border_business_card"
                         android:hint="@string/street"
                         android:layout_marginTop="10dp"
-                        android:padding="20dp"/>
+                        android:padding="20dp"
+                        android:maxLines="1"
+                        android:inputType="textPersonName"/>
 
                     <EditText
                         android:layout_weight="4"
@@ -116,7 +143,8 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginStart="10dp"
                         android:padding="20dp"
-                        android:inputType="number"/>
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                 </LinearLayout>
 
@@ -135,7 +163,8 @@
                         android:hint="@string/plz"
                         android:layout_marginTop="10dp"
                         android:padding="20dp"
-                        android:inputType="number"/>
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                     <EditText
                         android:layout_weight="3"
@@ -146,7 +175,9 @@
                         android:hint="@string/city"
                         android:layout_marginTop="10dp"
                         android:layout_marginStart="10dp"
-                        android:padding="20dp"/>
+                        android:padding="20dp"
+                        android:maxLines="1"
+                        android:inputType="textPersonName"/>
 
                 </LinearLayout>
 
@@ -157,7 +188,10 @@
                     android:background="@drawable/border_business_card"
                     android:hint="@string/tel_number"
                     android:layout_marginTop="10dp"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:maxLines="1"
+                    android:inputType="textPersonName"
+                    tools:ignore="TextFields" />
 
                 <EditText
                     android:id="@+id/et_email_address"
@@ -166,12 +200,14 @@
                     android:background="@drawable/border_business_card"
                     android:hint="@string/email_address"
                     android:layout_marginTop="10dp"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:maxLines="1"
+                    android:inputType="textPersonName"/>
 
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_save"
+                android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
@@ -201,7 +237,7 @@
                 android:gravity="center"
                 android:layout_marginTop="40dp"
                 android:paddingBottom="20dp"
-                android:layout_below="@id/cv_save"
+                android:layout_below="@id/btn_save"
                 android:orientation="vertical">
 
                 <ImageView
