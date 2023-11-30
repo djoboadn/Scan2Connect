@@ -69,7 +69,7 @@
             android:layout_marginHorizontal="90dp"/>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/btn_share_businiess_card"
+            android:id="@+id/btn_share_business_card"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="50dp"
@@ -97,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_below="@id/btn_share_businiess_card"
+            android:layout_below="@id/btn_share_business_card"
             android:layout_marginTop="40dp"
             android:paddingBottom="20dp"
             android:orientation="vertical">
