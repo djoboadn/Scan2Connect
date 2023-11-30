@@ -4,13 +4,19 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
 import com.example.scan2Connect.R
+import com.example.scan2Connect.domain.qr.ContactData
+import com.example.scan2Connect.domain.qr.exception.NoUserDataException
 import org.json.JSONObject
+import qrcode.render.QRCodeGraphics
 
 class YourBusinessCardActivity : ComponentActivity() {
 
@@ -79,7 +85,9 @@ class YourBusinessCardActivity : ComponentActivity() {
         mBtnEditShareBusinessCard.setOnClickListener {
             // TODO not implemented yet
         }
+
         getUserData()
+        renderQrCode()
     }
 
     private fun initGeneralView() {
@@ -88,6 +96,27 @@ class YourBusinessCardActivity : ComponentActivity() {
             val i = Intent(this, EditBusinessCardActivity::class.java)
             editBusinessCardListener.launch(i)
         }
+    }
+
+    /**
+     * Render contact data as QR code and display it
+     */
+    private fun renderQrCode() {
+        val qrImgView: ImageView = findViewById(R.id.qr_code)
+
+        val sharedPref = this.getSharedPreferences("com.example.scan2Connect.shared_prefs", Context.MODE_PRIVATE)
+        var renderedQr: QRCodeGraphics? = null
+        try {
+            renderedQr = ContactData.generateContactQr(sharedPref)
+        } catch (e: NoUserDataException) {
+            Log.d("qr", "Not generating QR on business card activity because no user data exists")
+        }
+
+        if (renderedQr === null) {
+            return
+        }
+
+        qrImgView.setImageBitmap(renderedQr.nativeImage() as Bitmap?)
     }
 
     private fun getUserData() {
