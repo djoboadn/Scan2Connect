@@ -2,16 +2,21 @@ package com.example.scan2Connect.activites
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.provider.MediaStore
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
+import androidx.core.view.drawToBitmap
 import com.example.scan2Connect.R
 import com.example.scan2Connect.domain.qr.ContactData
 import com.example.scan2Connect.domain.qr.exception.NoUserDataException
@@ -29,7 +34,8 @@ class YourBusinessCardActivity : ComponentActivity() {
     private lateinit var mBtnEditBusinessCardGray : CardView
     private lateinit var mBtnEditBusinessCardBlue : CardView
     private lateinit var mBtnShowQRCard : CardView
-    private lateinit var mBtnEditShareBusinessCard : CardView
+    private lateinit var mBtnShareBusinessCard : CardView
+    private lateinit var mBusinessCard : CardView
     private var mUserDataJSONFromPrefString = ""
 
     private var editBusinessCardListener = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
@@ -67,6 +73,7 @@ class YourBusinessCardActivity : ComponentActivity() {
         tvYourCity = findViewById(R.id.tv_your_city)
         tvYourPhoneNumber = findViewById(R.id.tv_your_phone_number)
         tvYourEmailAddress = findViewById(R.id.tv_your_email_address)
+        mBusinessCard = findViewById(R.id.business_card)
 
 
         mBtnEditBusinessCardGray = findViewById(R.id.btn_edit_business_card_gray)
@@ -81,9 +88,9 @@ class YourBusinessCardActivity : ComponentActivity() {
             startActivity(intent)
         }
 
-        mBtnEditShareBusinessCard = findViewById(R.id.btn_share_business_card)
-        mBtnEditShareBusinessCard.setOnClickListener {
-            // TODO not implemented yet
+        mBtnShareBusinessCard = findViewById(R.id.btn_share_business_card)
+        mBtnShareBusinessCard.setOnClickListener {
+            convertBusinessCardToBitmap()
         }
 
         getUserData()
@@ -135,5 +142,41 @@ class YourBusinessCardActivity : ComponentActivity() {
         tvYourCity.text = "$plz $city"
         tvYourPhoneNumber.text = telNumber
         tvYourEmailAddress.text = emailAddress
+    }
+
+    private fun convertBusinessCardToBitmap() {
+        val businessCardBitmap = mBusinessCard.drawToBitmap()
+        println("businessCardBitmap : $businessCardBitmap")
+        saveBitmapToGallery(businessCardBitmap)
+    }
+
+    private fun saveBitmapToGallery(businessCardBitmap: Bitmap) {
+        val values = ContentValues().apply {
+            put(MediaStore.Images.Media.DISPLAY_NAME, "businessCardBitmap.png")
+            put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+            put(MediaStore.Images.Media.DATE_ADDED, System.currentTimeMillis())
+            put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis())
+        }
+
+        val uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)!!
+
+        val outputStream = contentResolver.openOutputStream(uri)
+        outputStream.use {
+            if (outputStream != null) {
+                businessCardBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            }
+        }
+
+        outputStream!!.close()
+
+        shareBusinessCard(uri)
+    }
+
+    private fun shareBusinessCard(uri : Uri) {
+        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "image/*"
+            putExtra(Intent.EXTRA_STREAM, uri)
+        }
+        startActivity(Intent.createChooser(shareIntent, "Visitenkarte teilen"))
     }
 }
